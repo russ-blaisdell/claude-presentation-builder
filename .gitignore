@@ -1,0 +1,20 @@
+# Build outputs
+*.pptx
+!brands/*/template.pptx
+!examples/*.pptx
+
+# Proof images and QA reports
+*-proof/
+*-qa-report.json
+*-qa-report.md
+*-proof.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db

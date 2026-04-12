@@ -1,0 +1,46 @@
+{
+  "blank_canvas_idx": 2,
+  "blank_canvas_name": "CUSTOM_15",
+  "detection_method": "most_used",
+  "canvas": {
+    "width_in": 10.0,
+    "height_in": 5.625
+  },
+  "headline": {
+    "placeholder_idx": 0,
+    "width_in": 9.44,
+    "height_in": 0.41,
+    "top_in": 0.3
+  },
+  "footers": [
+    {
+      "placeholder_idx": 1,
+      "type": "footer",
+      "left_in": 2.15,
+      "top_in": 5.19,
+      "width_in": 1.7,
+      "height_in": 0.17,
+      "default": "{title}"
+    },
+    {
+      "placeholder_idx": 2,
+      "type": "footer",
+      "left_in": 4.58,
+      "top_in": 5.19,
+      "width_in": 1.7,
+      "height_in": 0.17,
+      "default": "{title}"
+    },
+    {
+      "placeholder_idx": 12,
+      "type": "slide_number",
+      "left_in": 9.47,
+      "top_in": 5.09,
+      "width_in": 0.38,
+      "height_in": 0.29,
+      "default": "auto"
+    }
+  ],
+  "title_layout_idx": null,
+  "section_layout_idx": 14
+}

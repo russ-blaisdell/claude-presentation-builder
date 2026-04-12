@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "description": "Audience-adaptive density presets. Set 'audience' in deck YAML to activate.",
+    "usage": "audience: c-suite | manager | ic"
+  },
+  "c-suite": {
+    "label": "C-Suite / Executive",
+    "max_slides": 10,
+    "max_words_per_slide": 30,
+    "headline_style": "assertion",
+    "headline_guidance": "Headlines should be decisions or recommendations, not topics. 'We should invest $2M' not 'Budget Overview'.",
+    "preferred_layouts": ["callout", "big_stat_manual", "before_after", "roadmap", "kpi_dashboard", "pros_cons"],
+    "avoid_layouts": ["content_table", "matrix", "radar_chart", "tornado_chart", "risk_heat_map"],
+    "density": "sparse",
+    "notes": "Lead with the answer. One idea per slide. Evidence in appendix."
+  },
+  "manager": {
+    "label": "Manager / Director",
+    "max_slides": 18,
+    "max_words_per_slide": 80,
+    "headline_style": "action",
+    "headline_guidance": "Headlines should state what's happening and when. 'Migration partner onboards April 15' not 'Partner Update'.",
+    "preferred_layouts": ["roadmap", "status_board", "kpi_dashboard", "process_flow", "side_by_side", "content_table", "comparison_matrix", "team_profiles"],
+    "avoid_layouts": [],
+    "density": "moderate",
+    "notes": "Show who-does-what-by-when. Include enough detail for operational decisions."
+  },
+  "ic": {
+    "label": "IC / Engineer",
+    "max_slides": 25,
+    "max_words_per_slide": 120,
+    "headline_style": "descriptive",
+    "headline_guidance": "Headlines should describe the content precisely. 'VM migration path by hypervisor type and target compute service'.",
+    "preferred_layouts": ["content_table", "content_diagram_text", "numbered_list", "comparison_matrix", "radar_chart", "combo_chart", "risk_heat_map"],
+    "avoid_layouts": ["callout", "big_stat_manual"],
+    "density": "detailed",
+    "notes": "Provide technical truth. Tables and diagrams preferred over narrative."
+  }
+}

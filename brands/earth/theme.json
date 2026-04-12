@@ -1,0 +1,20 @@
+{
+  "colors": {
+    "dk1": "#5D4037",
+    "dk2": "#FF8F00",
+    "lt1": "#FFFFFF",
+    "lt2": "#FBF8F3",
+    "accent1": "#5D4037",
+    "accent2": "#DED8D7",
+    "accent3": "#A1887F",
+    "accent4": "#FFFFFF",
+    "accent5": "#372621",
+    "accent6": "#FBF8F3",
+    "hlink": "#5D4037",
+    "folHlink": "#412C26"
+  },
+  "fonts": {
+    "heading": "Georgia",
+    "body": "Arial"
+  }
+}

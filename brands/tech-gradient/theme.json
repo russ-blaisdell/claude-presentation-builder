@@ -1,0 +1,20 @@
+{
+  "colors": {
+    "dk1": "#7C3AED",
+    "dk2": "#06B6D4",
+    "lt1": "#FFFFFF",
+    "lt2": "#1E1B4B",
+    "accent1": "#7C3AED",
+    "accent2": "#E4D7FB",
+    "accent3": "#A78BFA",
+    "accent4": "#FFFFFF",
+    "accent5": "#4A228E",
+    "accent6": "#1E1B4B",
+    "hlink": "#06B6D4",
+    "folHlink": "#047F94"
+  },
+  "fonts": {
+    "heading": "Arial Black",
+    "body": "Arial"
+  }
+}

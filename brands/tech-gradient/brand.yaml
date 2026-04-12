@@ -1,0 +1,35 @@
+name: Tech Gradient
+colors:
+  primary: '#7C3AED'
+  secondary: '#06B6D4'
+  accent: '#A78BFA'
+  background_light: '#1E1B4B'
+  background_card: '#312E81'
+  text_dark: '#E0E7FF'
+  text_gray: '#A5B4FC'
+  white: '#FFFFFF'
+  divider: '#4338CA'
+  link: '#06B6D4'
+  neutral_bg: '#1E1B4B'
+  gradient_start: '#7C3AED'
+  gradient_end: '#06B6D4'
+  gradient_light: '#C4B5FD'
+  gradient_ring_light: '#DDD6FE'
+  staircase_end: '#6366F1'
+  spoke_end: '#818CF8'
+  venn_tertiary: '#06B6D4'
+  green: '#10B981'
+  amber: '#F59E0B'
+  red: '#EF4444'
+fonts:
+  heading: Arial Black
+  body: Arial
+  mono: Courier New
+canvas:
+  width_inches: 10.0
+  height_inches: 5.625
+template: template.pptx
+title_backgrounds:
+  default: title-assets/title-bg.jpg
+agenda_backgrounds:
+  default: title-assets/agenda-left.jpg

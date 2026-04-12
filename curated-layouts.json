@@ -1,0 +1,816 @@
+{
+  "_meta": {
+    "template": "template.pptx",
+    "slide_width_in": 10.0,
+    "slide_height_in": 5.62,
+    "generated_from": "inspect_template.py output, manually curated",
+    "notes": "idx 12 is always slide number. Footer placeholders at y~5.19 are tiny (1.7x0.17) — do NOT use for visible content."
+  },
+  "layouts": {
+    "content_diagram_text": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Diagram + two text sections with split ratios. Generates 3 variants at different ratios.",
+      "use_for": "Architecture diagrams with explanatory text, any visual + two-section commentary",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "title_cover": {
+      "layout_idx": 6,
+      "template_name": "CUSTOM_3",
+      "description": "Title/cover slide — full-bleed background image + manual text overlay",
+      "use_for": "Opening slide of any deck. Supports single-line (38pt) or two-line split (56pt) with auto-detection.",
+      "placeholders": {
+        "bg_image": {"idx": 2, "left": 0.0, "top": 0.0, "width": 10.0, "height": 5.62, "role": "Full-slide background image"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 3, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "title_rendering": {
+        "backgrounds": {
+          "default": "title-assets/title-bg.jpg"
+        },
+        "single_line": {
+          "font_size_pt": 38,
+          "position": {"left": 0.63, "top": 2.0, "width": 8.73, "height": 0.7},
+          "subtitle_size_pt": 14
+        },
+        "two_line": {
+          "font_size_pt": 56,
+          "position": {"left": 0.5, "top": 1.2, "width": 9.0, "height": 2.5},
+          "subtitle_size_pt": 16
+        },
+        "font_name": "Urbanist ExtraBold",
+        "subtitle_font_name": "DM Sans",
+        "line1_color": "#FFFFFF",
+        "line2_color": "#FF33BB",
+        "subtitle_color": "#FFFFFF",
+        "rules": [
+          "If headline contains an em dash, split there and DROP the dash",
+          "Max two lines for title text — never three",
+          "If the pre-dash part is short (< 20 chars), use two-line at 56pt",
+          "If no natural break or title is short enough, use single-line at 38pt",
+          "Line 1 is always white, line 2 is always pink (#FF33BB)"
+        ]
+      }
+    },
+
+    "chapter_divider": {
+      "layout_idx": 14,
+      "template_name": "Start",
+      "description": "Chapter divider — large headline centered over background image",
+      "use_for": "Major section breaks (Agenda, Overview, Appendix, etc.)",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 2.07, "top": 0.29, "width": 6.74, "height": 1.92, "role": "Large centered headline"},
+        "bg_image": {"idx": 2, "left": 0.0, "top": 0.0, "width": 10.0, "height": 5.62, "role": "Full-slide background image"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 3, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "chapter_divider_clean": {
+      "layout_idx": 15,
+      "template_name": "Start_1",
+      "description": "Chapter divider — large headline, no background image",
+      "use_for": "Section breaks without images, cleaner look",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 2.07, "top": 0.29, "width": 7.38, "height": 1.92, "role": "Large centered headline (wider than image variant)"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "agenda": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Numbered agenda — fully manual rendering on clean canvas. Left image + right numbered items with divider lines.",
+      "use_for": "Agenda/table of contents slides",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Hidden — not used for agenda"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "agenda_rendering": {
+        "left_image": {"left": 0.34, "top": 0.39, "width": 3.94, "height": 3.93},
+        "right_area": {"num_left": 5.1, "text_left": 5.75, "line_left": 5.0, "right_edge": 9.62},
+        "top_start": 0.39,
+        "bottom_limit": 4.50,
+        "divider_color": "#5F016F",
+        "text_color": "#5F016F",
+        "num_font": "Urbanist ExtraBold",
+        "text_font": "DM Sans",
+        "images": {
+          "default": "title-assets/agenda-left-p22.jpg",
+          "p21": "title-assets/agenda-left-p21.jpg",
+          "p22": "title-assets/agenda-left-p22.jpg",
+          "p23": "title-assets/agenda-left-p23.png"
+        }
+      }
+    },
+
+    "big_stat": {
+      "layout_idx": 17,
+      "template_name": "CUSTOM_8_1",
+      "description": "Large stat/number with description label above",
+      "use_for": "Hero numbers, key metrics, impact stats",
+      "placeholders": {
+        "number": {"idx": 0, "left": 0.33, "top": 0.83, "width": 9.12, "height": 3.94, "role": "Large number or stat — use huge font"},
+        "label": {"idx": 1, "left": 0.33, "top": 0.41, "width": 2.96, "height": 0.39, "role": "Description label above the number"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 2, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 3, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "content_image_text": {
+      "layout_idx": 21,
+      "template_name": "CUSTOM_9",
+      "description": "Left text + right image — headline, subheadline, body on left; image on right",
+      "use_for": "Architecture diagrams, screenshots with explanation, visual + text combos",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.34, "top": 0.31, "width": 4.15, "height": 0.96, "role": "Main headline, left side"},
+        "subheadline": {"idx": 2, "left": 0.34, "top": 2.21, "width": 3.30, "height": 0.38, "role": "Subheadline / category label"},
+        "body": {"idx": 1, "left": 0.34, "top": 2.51, "width": 3.03, "height": 0.67, "role": "Body text below subheadline"},
+        "image": {"idx": 3, "left": 5.01, "top": 0.31, "width": 4.66, "height": 4.26, "role": "Right-side image placeholder"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 4, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 5, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "content_two_col": {
+      "layout_idx": 22,
+      "template_name": "CUSTOM_10",
+      "description": "Headline + two titled columns (compact headline, content lower)",
+      "use_for": "Two-topic comparison slides, pros/cons, before/after",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.34, "top": 0.30, "width": 5.09, "height": 1.31, "role": "Section headline across top-left"},
+        "left_title": {"idx": 2, "left": 0.34, "top": 2.81, "width": 3.30, "height": 0.38, "role": "Left column title"},
+        "left_body": {"idx": 1, "left": 0.34, "top": 3.27, "width": 4.00, "height": 1.03, "role": "Left column body text"},
+        "right_title": {"idx": 3, "left": 4.81, "top": 2.81, "width": 3.30, "height": 0.38, "role": "Right column title"},
+        "right_body": {"idx": 4, "left": 4.81, "top": 3.27, "width": 4.00, "height": 1.03, "role": "Right column body text"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 5, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 6, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "variant_text_heavy": {
+        "layout_idx": 23,
+        "template_name": "CUSTOM_10_2",
+        "note": "Same structure but smaller headline (0.51h), columns start at y=1.39 with 2.94h bodies — use for text-heavy content"
+      }
+    },
+
+    "content_three_col": {
+      "layout_idx": 24,
+      "template_name": "CUSTOM_10_1",
+      "description": "Headline + three titled columns",
+      "use_for": "Three-topic overviews, three pillars, three phases",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.34, "top": 0.30, "width": 5.09, "height": 1.31, "role": "Section headline across top-left"},
+        "col1_title": {"idx": 2, "left": 0.34, "top": 2.88, "width": 2.82, "height": 0.38, "role": "Column 1 title"},
+        "col1_body": {"idx": 1, "left": 0.34, "top": 3.34, "width": 2.80, "height": 1.03, "role": "Column 1 body"},
+        "col2_title": {"idx": 3, "left": 3.59, "top": 2.88, "width": 2.82, "height": 0.38, "role": "Column 2 title"},
+        "col2_body": {"idx": 4, "left": 3.61, "top": 3.34, "width": 2.80, "height": 1.03, "role": "Column 2 body"},
+        "col3_title": {"idx": 5, "left": 6.84, "top": 2.88, "width": 2.82, "height": 0.38, "role": "Column 3 title"},
+        "col3_body": {"idx": 6, "left": 6.86, "top": 3.34, "width": 2.80, "height": 1.03, "role": "Column 3 body"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 7, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 8, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "variant_text_heavy": {
+        "layout_idx": 25,
+        "template_name": "CUSTOM_10_1_2",
+        "note": "Same structure with smaller headline, taller body areas"
+      }
+    },
+
+    "content_four_cards": {
+      "layout_idx": 26,
+      "template_name": "CUSTOM_10_1_1",
+      "description": "Headline + four card columns (title + body each)",
+      "use_for": "Four items, team/workstream cards, four-quadrant layouts",
+      "placeholders": {
+        "headline": {"idx": 8, "left": 0.34, "top": 0.30, "width": 5.09, "height": 0.71, "role": "Section headline"},
+        "card1_title": {"idx": 0, "left": 0.34, "top": 2.89, "width": 2.33, "height": 0.39, "role": "Card 1 title"},
+        "card1_body": {"idx": 1, "left": 0.34, "top": 3.35, "width": 2.09, "height": 1.03, "role": "Card 1 body"},
+        "card2_title": {"idx": 2, "left": 2.71, "top": 2.89, "width": 2.33, "height": 0.39, "role": "Card 2 title"},
+        "card2_body": {"idx": 3, "left": 2.71, "top": 3.35, "width": 2.15, "height": 1.03, "role": "Card 2 body"},
+        "card3_title": {"idx": 4, "left": 5.09, "top": 2.89, "width": 2.33, "height": 0.39, "role": "Card 3 title"},
+        "card3_body": {"idx": 5, "left": 5.09, "top": 3.35, "width": 2.15, "height": 1.03, "role": "Card 3 body"},
+        "card4_title": {"idx": 6, "left": 7.47, "top": 2.89, "width": 2.33, "height": 0.39, "role": "Card 4 title"},
+        "card4_body": {"idx": 7, "left": 7.47, "top": 3.35, "width": 2.15, "height": 1.03, "role": "Card 4 body"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 9, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 13, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "content_h3_two_col": {
+      "layout_idx": 28,
+      "template_name": "CUSTOM_11",
+      "description": "H3 headline + two wider titled columns (more generous spacing)",
+      "use_for": "Two-topic slides with more room, key details side by side",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.34, "top": 0.30, "width": 5.09, "height": 1.31, "role": "H3-style headline"},
+        "left_title": {"idx": 2, "left": 0.64, "top": 2.72, "width": 4.00, "height": 0.38, "role": "Left column title"},
+        "left_body": {"idx": 1, "left": 0.66, "top": 3.18, "width": 3.84, "height": 1.03, "role": "Left column body"},
+        "right_title": {"idx": 3, "left": 5.47, "top": 2.72, "width": 4.00, "height": 0.38, "role": "Right column title"},
+        "right_body": {"idx": 4, "left": 5.50, "top": 3.18, "width": 3.84, "height": 1.03, "role": "Right column body"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 5, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 6, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "variant_text_heavy": {
+        "layout_idx": 29,
+        "template_name": "CUSTOM_11_2",
+        "note": "Same structure, taller body areas (2.15h vs 1.03h)"
+      }
+    },
+
+    "content_h3_three_col": {
+      "layout_idx": 30,
+      "template_name": "CUSTOM_11_1",
+      "description": "H3 headline + three titled columns (wider spacing)",
+      "use_for": "Three-topic slides with generous room",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.34, "top": 0.30, "width": 5.09, "height": 1.31, "role": "H3-style headline"},
+        "col1_title": {"idx": 2, "left": 0.51, "top": 2.88, "width": 2.50, "height": 0.38, "role": "Column 1 title"},
+        "col1_body": {"idx": 1, "left": 0.51, "top": 3.34, "width": 2.50, "height": 1.03, "role": "Column 1 body"},
+        "col2_title": {"idx": 3, "left": 3.74, "top": 2.88, "width": 2.50, "height": 0.38, "role": "Column 2 title"},
+        "col2_body": {"idx": 4, "left": 3.74, "top": 3.34, "width": 2.50, "height": 1.03, "role": "Column 2 body"},
+        "col3_title": {"idx": 5, "left": 6.96, "top": 2.88, "width": 2.50, "height": 0.38, "role": "Column 3 title"},
+        "col3_body": {"idx": 6, "left": 6.96, "top": 3.34, "width": 2.50, "height": 1.03, "role": "Column 3 body"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 7, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 8, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "variant_text_heavy": {
+        "layout_idx": 31,
+        "template_name": "CUSTOM_11_1_2",
+        "note": "Same structure, taller body areas"
+      }
+    },
+
+    "content_generic": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Generic slide — headline only, add content via manual text boxes",
+      "use_for": "Custom content, full-slide diagrams, anything that doesn't fit other layouts",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Thin headline bar across top"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "manual_content_area": {
+        "note": "Add text boxes and images in the area below the headline",
+        "safe_area": {"left": 0.35, "top": 0.85, "width": 9.30, "height": 4.10}
+      }
+    },
+
+    "thank_you": {
+      "layout_idx": 14,
+      "template_name": "Start",
+      "description": "Closing/thank you slide — reuses chapter divider layout",
+      "use_for": "Final slide, thank you, Q&A",
+      "placeholders": {
+        "headline": {"idx": 0, "left": 2.07, "top": 0.29, "width": 6.74, "height": 1.92, "role": "Thank you text or closing message"},
+        "bg_image": {"idx": 2, "left": 0.0, "top": 0.0, "width": 10.0, "height": 5.62, "role": "Optional background image"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 3, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "side_by_side": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Two columns with icons, vertically centered — manual rendering on content_generic canvas",
+      "use_for": "Two-topic comparison, before/after, pros/cons with icons",
+      "fields": ["headline", "left_icon", "left_title", "left_body", "right_icon", "right_title", "right_body"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "rendering": {
+        "columns": [
+          {"x": 0.35, "width": 4.0, "role": "Left column"},
+          {"x": 5.1, "width": 4.0, "role": "Right column"}
+        ],
+        "icon_size": 0.4,
+        "vertical_centering": {"top": 0.85, "bottom": 5.0}
+      }
+    },
+
+    "three_column": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Three titled columns with icons — manual rendering on content_generic canvas",
+      "use_for": "Three-topic overviews, three pillars, three phases with icons",
+      "fields": ["headline", "col1_icon", "col1_title", "col1_body", "col2_icon", "col2_title", "col2_body", "col3_icon", "col3_title", "col3_body"],
+      "field_aliases": {"section1_title": "col1_title", "section1_body": "col1_body", "section1_icon": "col1_icon", "section2_title": "col2_title", "section2_body": "col2_body", "section2_icon": "col2_icon", "section3_title": "col3_title", "section3_body": "col3_body", "section3_icon": "col3_icon"},
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "rendering": {
+        "columns": [
+          {"x": 0.35, "width": 2.9, "role": "Column 1"},
+          {"x": 3.55, "width": 2.9, "role": "Column 2"},
+          {"x": 6.75, "width": 2.9, "role": "Column 3"}
+        ],
+        "icon_size": 0.4,
+        "vertical_centering": {"top": 0.85, "bottom": 5.0}
+      }
+    },
+
+    "four_card": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Four card blocks with light purple backgrounds — manual rendering on content_generic canvas",
+      "use_for": "Four items, team/workstream cards, four-quadrant layouts with card styling",
+      "fields": ["headline", "card1_title", "card1_body", "card2_title", "card2_body", "card3_title", "card3_body", "card4_title", "card4_body"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "rendering": {
+        "card_width": 2.2,
+        "card_gap": 0.1,
+        "bg_color": "#F0E8F5",
+        "title_font": "Urbanist ExtraBold",
+        "title_size_pt": 11,
+        "body_font": "DM Sans",
+        "body_size_pt": 9,
+        "vertical_centering": {"top": 0.85, "bottom": 5.0}
+      }
+    },
+
+    "big_stat_manual": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Hero number centered on slide — manual rendering on content_generic canvas",
+      "use_for": "Hero numbers, key metrics, impact stats (manual render with icon support)",
+      "fields": ["headline", "number", "label", "icon"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "rendering": {
+        "number_font": "Urbanist ExtraBold",
+        "number_size_pt": 72,
+        "label_font": "DM Sans",
+        "label_size_pt": 16,
+        "vertical_centering": {"top": 0.85, "bottom": 5.0}
+      }
+    },
+
+    "content_table": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Table with styled header row, striped data rows — manual rendering on content_generic canvas",
+      "use_for": "Rubrics, comparison matrices, scored criteria, any tabular data",
+      "fields": [
+        "headline",
+        "columns",
+        "rows",
+        "col_widths",
+        "header_bg",
+        "stripe"
+      ],
+      "placeholders": {
+        "headline": {
+          "idx": 0,
+          "left": 0.35,
+          "top": 0.3,
+          "width": 9.44,
+          "height": 0.41,
+          "role": "Slide headline"
+        }
+      },
+      "footer_placeholders": {
+        "footer_left": {
+          "idx": 1,
+          "left": 2.15,
+          "top": 5.19,
+          "width": 1.7,
+          "height": 0.17
+        },
+        "footer_right": {
+          "idx": 2,
+          "left": 4.58,
+          "top": 5.19,
+          "width": 1.7,
+          "height": 0.17
+        },
+        "slide_num": {
+          "idx": 12,
+          "left": 9.47,
+          "top": 5.09,
+          "width": 0.38,
+          "height": 0.29
+        }
+      },
+      "rendering": {
+        "table_area": {
+          "left": 0.35,
+          "top": 0.85,
+          "right_margin": 0.35,
+          "bottom": 5.05
+        },
+        "header_bg": "5F016F",
+        "stripe_color": "FFF0F8",
+        "header_font": "Urbanist ExtraBold",
+        "body_font": "DM Sans"
+      }
+    },
+
+    "content_table_bullets": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Table in top portion with bullet points below — manual rendering on content_generic canvas",
+      "use_for": "Adoption matrices, status dashboards, any table that needs key takeaways or commentary below",
+      "fields": [
+        "headline",
+        "columns",
+        "rows",
+        "col_widths",
+        "header_bg",
+        "stripe",
+        "cell_colors",
+        "bullets_title",
+        "bullets"
+      ],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "rendering": {
+        "table_area": {"left": 0.35, "top": 0.85, "right_margin": 0.35, "max_height": 3.4},
+        "bullets_area": {"top_offset": 0.15, "bottom": 5.05},
+        "header_bg": "5F016F",
+        "stripe_color": "FFF0F8",
+        "header_font": "Urbanist ExtraBold",
+        "body_font": "DM Sans"
+      }
+    },
+
+    "closing": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Closing/CTA slide with large centered headline and optional background — manual rendering on content_generic canvas",
+      "use_for": "Final slide, Q&A, closing CTA with branded background",
+      "fields": ["headline", "subheader", "contact_info", "background"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Hidden — not used for closing"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      },
+      "rendering": {
+        "headline_font": "Urbanist ExtraBold",
+        "headline_size_pt": 48,
+        "subheader_font": "DM Sans",
+        "subheader_size_pt": 16,
+        "backgrounds": {
+          "default": "title-assets/title-bg.jpg"
+        }
+      }
+    },
+
+    "section_divider": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Section divider — visual break between deck sections with number, headline, optional icon",
+      "use_for": "Section breaks in long decks, chapter dividers",
+      "fields": ["section_number", "headline", "subheader", "background", "icon"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Hidden — rendered manually"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "quote": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Quote/testimonial with decorative mark, attribution, and optional icon",
+      "use_for": "Executive quotes, stakeholder endorsements, vision callouts",
+      "fields": ["headline", "quote_text", "attribution", "attribution_title", "icon", "style"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "kpi_dashboard": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "KPI dashboard — grid of metric cards with numbers, labels, trends, and icons",
+      "use_for": "Metric summaries, OKR reviews, program health, migration progress",
+      "fields": ["headline", "metrics", "columns"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "roadmap": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Roadmap — Gantt-style timeline with swimlanes, colored bars, and milestone diamonds",
+      "use_for": "Program timelines, migration roadmaps, phased delivery plans",
+      "fields": ["headline", "time_axis", "swimlanes", "milestones"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "before_after": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Before/after transformation — two columns with center arrow showing change",
+      "use_for": "Current vs target state, transformation stories, migration before/after",
+      "fields": ["headline", "before", "after", "arrow_label"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "numbered_list": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Numbered list — large numbers with title and body per item, dividers between",
+      "use_for": "Step-by-step processes, prioritized lists, decision frameworks",
+      "fields": ["headline", "items"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "status_board": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "RAG status board — colored circles with name and summary per workstream",
+      "use_for": "Project health dashboards, program governance, workstream status tracking",
+      "fields": ["headline", "items", "as_of"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "image_showcase": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Image showcase — full-slide image with optional caption and border",
+      "use_for": "Architecture diagrams, screenshots, reference designs, any image-primary slide",
+      "fields": ["headline", "image", "caption", "border"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "matrix": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Color-coded matrix — RACI charts, capability grids with cell coloring and legend",
+      "use_for": "RACI, responsibility matrices, risk grids, capability assessments",
+      "fields": ["headline", "row_header", "col_header", "rows", "columns", "cell_colors", "legend"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "funnel": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Funnel — progressively narrowing bars for pipeline/adoption visualization",
+      "use_for": "Adoption funnels, pipeline stages, filtering processes",
+      "fields": ["headline", "stages"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "callout": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Callout/highlight — key takeaway with large text in boxed or open style",
+      "use_for": "Key decisions, executive highlights, takeaway slides",
+      "fields": ["headline", "callout_text", "supporting_text", "icon", "style"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Hidden — rendered manually"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "process_flow": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Process flow — 3-6 connected chevron or circle steps, horizontal",
+      "use_for": "Migration methodology, onboarding steps, project phases, any sequential process",
+      "fields": ["headline", "steps", "style"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "comparison_matrix": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Comparison matrix — feature evaluation with Harvey balls, checkmarks, or text",
+      "use_for": "Vendor evaluation, tool comparison, capability assessment, feature checklist",
+      "fields": ["headline", "row_header", "columns", "highlight_column", "rows", "legend"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "quadrant": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "2x2 quadrant matrix — SWOT, priority, effort/impact, positioning",
+      "use_for": "SWOT analysis, effort vs impact, risk matrices, strategic positioning",
+      "fields": ["headline", "x_axis", "y_axis", "quadrants"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "team_profiles": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Team profile cards — people cards with icon, name, role, context",
+      "use_for": "Project leadership, team introductions, stakeholder overviews",
+      "fields": ["headline", "profiles"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "pros_cons": {
+      "layout_idx": 2,
+      "template_name": "CUSTOM_15",
+      "description": "Pros and cons — green strengths / red risks dual columns with recommendation",
+      "use_for": "Decision evaluation, option assessment, risk/benefit analysis",
+      "fields": ["headline", "pros_label", "cons_label", "pros", "cons", "recommendation"],
+      "placeholders": {
+        "headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41, "role": "Slide headline"}
+      },
+      "footer_placeholders": {
+        "footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17},
+        "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17},
+        "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}
+      }
+    },
+
+    "staircase": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Staircase maturity model — ascending levels with current highlight", "use_for": "Maturity assessments, capability progression, adoption stages", "fields": ["headline", "levels", "current_level"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "donut_rings": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Progress ring dashboard — percentage arcs with labels and color coding", "use_for": "OKR progress, completion percentages, goal tracking", "fields": ["headline", "rings"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "pyramid": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Pyramid hierarchy — 3-5 horizontal tiers from narrow top to wide bottom", "use_for": "Strategy layers, technology stacks, organizational hierarchy", "fields": ["headline", "tiers"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "venn": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Venn diagram — 2-3 overlapping translucent circles with intersection labels", "use_for": "Strategic positioning, capability overlap, convergence points", "fields": ["headline", "circles", "intersections"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "waterfall": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Waterfall/bridge chart — floating bars showing contributions from start to end", "use_for": "Cost analysis, variance explanation, budget walks", "fields": ["headline", "start", "items", "end", "source"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "pricing_table": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Pricing/tier comparison — 3-4 vertical cards with features and highlighted tier", "use_for": "Pricing plans, service tiers, package comparison", "fields": ["headline", "tiers"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "concentric_circles": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Concentric circles — TAM/SAM/SOM or layered strategy rings", "use_for": "Market sizing, layered strategy, nested scope", "fields": ["headline", "rings"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "bold_bullet": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Executive summary — bold assertions with indented evidence bullets", "use_for": "Executive summaries, key findings, recommendation support", "fields": ["headline", "points"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "cycle_diagram": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Circular cycle — 3-6 nodes in a ring with directional arrows", "use_for": "Repeating processes, feedback loops, iterative workflows", "fields": ["headline", "nodes", "center_label"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "hub_spoke": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Hub and spoke — central circle with radiating connected nodes", "use_for": "Platform architecture, team relationships, service mesh", "fields": ["headline", "hub", "spokes"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "gauge_dashboard": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Gauge/speedometer dashboard — 2-4 semicircular dials with ranges", "use_for": "Performance dashboards, SLA monitoring, health scores", "fields": ["headline", "gauges"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "risk_heat_map": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "5x5 risk heat map — color-graded grid with plotted risk items", "use_for": "Risk assessment, threat analysis, priority mapping", "fields": ["headline", "x_axis", "y_axis", "items"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "tornado_chart": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Tornado/sensitivity chart — horizontal bars extending left and right from center", "use_for": "Sensitivity analysis, variable impact comparison, risk drivers", "fields": ["headline", "items", "center_label"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "radar_chart": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Radar/spider chart — polygon on radial axes for multi-dimension comparison", "use_for": "Capability comparison, skill assessment, multi-criteria evaluation", "fields": ["headline", "axes", "series"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "combo_chart": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Combo chart — overlaid bar chart and line with dual Y-axes", "use_for": "Trend + volume comparison, cost + count, revenue + growth", "fields": ["headline", "categories", "bars", "line", "y_axis_left", "y_axis_right"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "bubble_chart": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Bubble chart — scatter plot with variable-size circles", "use_for": "Three-dimensional data comparison, portfolio analysis", "fields": ["headline", "x_axis", "y_axis", "bubbles"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "bento_grid": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Bento grid — mixed-size tiles with hero tile and supporting cards", "use_for": "Feature overviews, dashboard summaries, mixed-content layouts", "fields": ["headline", "tiles"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "dashboard_panel": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Dashboard panel — KPI tiles + chart area + summary text combined", "use_for": "Executive dashboards, combined metrics views, portfolio summaries", "fields": ["headline", "kpis", "chart_title", "chart_data", "summary"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "left_nav_sidebar": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Left navigation sidebar — narrow nav panel with step indicators and main content", "use_for": "Multi-step walkthroughs, tabbed content, guided presentations", "fields": ["headline", "nav_items", "content_title", "content_body"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}},
+    "image_text_hero": {"layout_idx": 2, "template_name": "CUSTOM_15", "description": "Hero image with text — full-bleed image with text overlay strip", "use_for": "Visual storytelling, case studies, impact statements with imagery", "fields": ["headline", "image", "body", "text_position"], "placeholders": {"headline": {"idx": 0, "left": 0.35, "top": 0.30, "width": 9.44, "height": 0.41}}, "footer_placeholders": {"footer_left": {"idx": 1, "left": 2.15, "top": 5.19, "width": 1.7, "height": 0.17}, "footer_right": {"idx": 2, "left": 4.58, "top": 5.19, "width": 1.7, "height": 0.17}, "slide_num": {"idx": 12, "left": 9.47, "top": 5.09, "width": 0.38, "height": 0.29}}}
+  }
+}

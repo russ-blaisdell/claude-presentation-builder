@@ -1,0 +1,35 @@
+name: Startup Bold
+colors:
+  primary: '#6C2BD9'
+  secondary: '#F97316'
+  accent: '#FCA5A5'
+  background_light: '#F5F3FF'
+  background_card: '#FFF7ED'
+  text_dark: '#1E1B4B'
+  text_gray: '#6B7280'
+  white: '#FFFFFF'
+  divider: '#C4B5FD'
+  link: '#6C2BD9'
+  neutral_bg: '#F9FAFB'
+  gradient_start: '#6C2BD9'
+  gradient_end: '#F97316'
+  gradient_light: '#DDD6FE'
+  gradient_ring_light: '#E0D4FE'
+  staircase_end: '#C4B5FD'
+  spoke_end: '#D4C8FC'
+  venn_tertiary: '#A78BFA'
+  green: '#059669'
+  amber: '#D97706'
+  red: '#DC2626'
+fonts:
+  heading: Arial Black
+  body: Arial
+  mono: Courier New
+canvas:
+  width_inches: 10.0
+  height_inches: 5.625
+template: template.pptx
+title_backgrounds:
+  default: title-assets/title-bg.jpg
+agenda_backgrounds:
+  default: title-assets/agenda-left.jpg

@@ -1,0 +1,35 @@
+name: Generic
+colors:
+  primary: '#1A365D'
+  secondary: '#3182CE'
+  accent: '#63B3ED'
+  background_light: '#EBF4FF'
+  background_card: '#F7FAFC'
+  text_dark: '#2D3748'
+  text_gray: '#718096'
+  white: '#FFFFFF'
+  divider: '#CBD5E0'
+  link: '#2B6CB0'
+  neutral_bg: '#F7FAFC'
+  gradient_start: '#1A365D'
+  gradient_end: '#3182CE'
+  gradient_light: '#A3C4EC'
+  gradient_ring_light: '#B3D4FC'
+  staircase_end: '#C0D0E0'
+  spoke_end: '#B0C0D0'
+  venn_tertiary: '#90CAF9'
+  green: '#2F855A'
+  amber: '#C05621'
+  red: '#C53030'
+fonts:
+  heading: Arial
+  body: Arial
+  mono: Courier New
+canvas:
+  width_inches: 10.0
+  height_inches: 5.625
+template: template.pptx
+title_backgrounds:
+  default: title-assets/title-bg.jpg
+agenda_backgrounds:
+  default: title-assets/agenda-left.jpg

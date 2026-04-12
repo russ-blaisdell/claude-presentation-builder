@@ -1,0 +1,35 @@
+name: Government
+colors:
+  primary: '#112E51'
+  secondary: '#205493'
+  accent: '#02BFE7'
+  background_light: '#F1F5F9'
+  background_card: '#F8F9FA'
+  text_dark: '#1B1B1B'
+  text_gray: '#5C5C5C'
+  white: '#FFFFFF'
+  divider: '#AEB0B5'
+  link: '#205493'
+  neutral_bg: '#F1F5F9'
+  gradient_start: '#112E51'
+  gradient_end: '#205493'
+  gradient_light: '#B8CCE0'
+  gradient_ring_light: '#C8D8E8'
+  staircase_end: '#A0B0C0'
+  spoke_end: '#B0BCC8'
+  venn_tertiary: '#02BFE7'
+  green: '#2E8540'
+  amber: '#E59400'
+  red: '#CD2026'
+fonts:
+  heading: Arial
+  body: Arial
+  mono: Courier New
+canvas:
+  width_inches: 10.0
+  height_inches: 5.625
+template: template.pptx
+title_backgrounds:
+  default: title-assets/title-bg.jpg
+agenda_backgrounds:
+  default: title-assets/agenda-left.jpg

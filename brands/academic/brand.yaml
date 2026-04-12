@@ -1,0 +1,35 @@
+name: Academic
+colors:
+  primary: '#1B2A4A'
+  secondary: '#8B0000'
+  accent: '#C9A96E'
+  background_light: '#F5F5F0'
+  background_card: '#FAF8F5'
+  text_dark: '#2C2C2C'
+  text_gray: '#6B6B6B'
+  white: '#FFFFFF'
+  divider: '#C5C5B8'
+  link: '#1B2A4A'
+  neutral_bg: '#F5F5F0'
+  gradient_start: '#1B2A4A'
+  gradient_end: '#8B0000'
+  gradient_light: '#C8D0DD'
+  gradient_ring_light: '#D8DDE6'
+  staircase_end: '#B8BDC5'
+  spoke_end: '#C0C5CC'
+  venn_tertiary: '#C9A96E'
+  green: '#2D6A4F'
+  amber: '#B8860B'
+  red: '#8B0000'
+fonts:
+  heading: Georgia
+  body: Palatino
+  mono: Courier New
+canvas:
+  width_inches: 10.0
+  height_inches: 5.625
+template: template.pptx
+title_backgrounds:
+  default: title-assets/title-bg.jpg
+agenda_backgrounds:
+  default: title-assets/agenda-left.jpg

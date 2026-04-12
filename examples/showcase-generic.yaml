@@ -1,0 +1,145 @@
+title: "Project Horizon: Next-Gen Developer Platform"
+date: 2026-Q2
+brand: generic
+slides:
+- layout: title_cover
+  headline: "Project Horizon \u2014 Next-Gen Developer Platform"
+  subheader: Platform Engineering | Q2 2026
+  background: default
+
+- layout: agenda
+  headline: Agenda
+  items:
+  - Current State Assessment
+  - Platform Vision & Pillars
+  - Adoption Roadmap
+  - Target Metrics
+  - Build vs Buy Analysis
+  - Projected Impact
+
+- layout: content_two_col
+  headline: "Current State \u2014 Where We Are Today"
+  variants: 1
+  left_title: Pain Points
+  left_body: "45-minute average deploy cycle\n\n3.2 incidents per week from config drift\n\n14 days to onboard a new engineer\n\nNo standardized service templates"
+  right_title: Target State
+  right_body: "Sub-5-minute deploys via self-service CI/CD\n\nZero-drift infrastructure as code\n\n2-day engineer onboarding\n\nGolden paths for every service type"
+  left_stats:
+  - number: '45 min'
+    label: Deploy Cycle
+    icon: clock
+  - number: '3.2/wk'
+    label: Config Incidents
+    icon: warning
+  - number: '14 days'
+    label: Onboarding Time
+    icon: calendar
+
+- layout: four_card
+  headline: Platform Pillars
+  cards:
+  - title: Self-Service Infrastructure
+    body: "Terraform modules with guardrails\n\nOne-click environment provisioning\n\nCost-aware resource defaults"
+  - title: CI/CD Pipeline
+    body: "Standardized build and deploy\n\nAutomatic security scanning\n\nCanary deployments by default"
+  - title: Service Catalog
+    body: "Golden path service templates\n\nAPI-first design standards\n\nOwnership and dependency tracking"
+  - title: Observability Stack
+    body: "Unified metrics and tracing\n\nSLA-driven alerting\n\nReal-time cost dashboards"
+
+- layout: content_table
+  headline: Adoption Roadmap
+  columns:
+  - Phase
+  - Scope
+  - Teams
+  - Timeline
+  rows:
+  - - Foundation
+    - CI/CD pipeline, service catalog
+    - Platform + 2 pilot teams
+    - Q2 2026
+  - - Early Adopters
+    - Self-service infra, golden paths
+    - 8 volunteer teams
+    - Q3 2026
+  - - Scaling
+    - Full observability, cost tooling
+    - All engineering (24 teams)
+    - Q4 2026
+  - - Maturity
+    - Self-service everything, metrics-driven
+    - Organization-wide
+    - Q1 2027
+
+- layout: roadmap
+  headline: Engineering Roadmap
+  lanes:
+  - name: Infrastructure
+    items:
+    - label: Terraform modules
+      start: 1
+      end: 2
+    - label: Environment provisioning
+      start: 2
+      end: 4
+  - name: CI/CD
+    items:
+    - label: Pipeline standardization
+      start: 1
+      end: 3
+    - label: Canary deploys
+      start: 3
+      end: 5
+  - name: Developer Experience
+    items:
+    - label: Service catalog
+      start: 2
+      end: 4
+    - label: Golden path templates
+      start: 4
+      end: 6
+  milestones:
+  - label: Pilot Launch
+    position: 2
+  - label: GA Release
+    position: 5
+
+- layout: kpi_dashboard
+  headline: "Target Metrics \u2014 By End of Q4 2026"
+  kpis:
+  - number: "< 5 min"
+    label: Deploy Time
+    trend: down
+  - number: "< 30 min"
+    label: Mean Time to Recovery
+    trend: down
+  - number: 85%
+    label: Developer Satisfaction
+    trend: up
+  - number: 2 days
+    label: New Engineer Onboarding
+    trend: down
+
+- layout: pros_cons
+  headline: Build vs Buy Analysis
+  pros_title: Build In-House
+  pros:
+  - Full control over developer experience
+  - Deep integration with existing systems
+  - No per-seat licensing costs at scale
+  cons_title: Managed PaaS
+  cons:
+  - Faster initial time to value
+  - Reduced operational burden on platform team
+  - Built-in compliance and audit features
+
+- layout: big_stat
+  headline: Projected Impact
+  number: 10x
+  label: Improvement in deployment frequency by end of 2026
+
+- layout: closing
+  headline: Questions?
+  subheader: Platform Engineering Team
+  contact_info: platform-eng@example.com

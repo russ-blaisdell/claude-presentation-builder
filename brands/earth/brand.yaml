@@ -1,0 +1,35 @@
+name: Earth Tones
+colors:
+  primary: '#5D4037'
+  secondary: '#FF8F00'
+  accent: '#A1887F'
+  background_light: '#FBF8F3'
+  background_card: '#FFF8E1'
+  text_dark: '#3E2723'
+  text_gray: '#8D6E63'
+  white: '#FFFFFF'
+  divider: '#D7CCC8'
+  link: '#5D4037'
+  neutral_bg: '#EFEBE9'
+  gradient_start: '#5D4037'
+  gradient_end: '#FF8F00'
+  gradient_light: '#D7CCC8'
+  gradient_ring_light: '#EFEBE9'
+  staircase_end: '#BCAAA4'
+  spoke_end: '#C8B8B0'
+  venn_tertiary: '#A1887F'
+  green: '#558B2F'
+  amber: '#E65100'
+  red: '#BF360C'
+fonts:
+  heading: Georgia
+  body: Arial
+  mono: Courier New
+canvas:
+  width_inches: 10.0
+  height_inches: 5.625
+template: template.pptx
+title_backgrounds:
+  default: title-assets/title-bg.jpg
+agenda_backgrounds:
+  default: title-assets/agenda-left.jpg

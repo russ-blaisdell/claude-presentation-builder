@@ -1,0 +1,20 @@
+{
+  "colors": {
+    "dk1": "#1B2A4A",
+    "dk2": "#8B0000",
+    "lt1": "#FFFFFF",
+    "lt2": "#F5F5F0",
+    "accent1": "#1B2A4A",
+    "accent2": "#D1D4DA",
+    "accent3": "#C9A96E",
+    "accent4": "#FFFFFF",
+    "accent5": "#10192C",
+    "accent6": "#F5F5F0",
+    "hlink": "#1B2A4A",
+    "folHlink": "#121D33"
+  },
+  "fonts": {
+    "heading": "Georgia",
+    "body": "Palatino"
+  }
+}

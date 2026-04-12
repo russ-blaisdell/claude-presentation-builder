@@ -1,0 +1,277 @@
+{
+  "_meta": {
+    "description": "Measured content limits for all 47 layouts. Generated from 162-slide stress test.",
+    "date": "2026-04-10",
+    "enforcement": "Validated at build time by check_yaml_content_limits(). Exceeding limits produces errors with suggestions."
+  },
+  "layouts": {
+    "title_cover": {
+      "max_headline_chars": 80,
+      "max_subheader_chars": 100,
+      "split_guidance": "Shorten title or move detail to subheader."
+    },
+    "agenda": {
+      "min_items": 3,
+      "max_items": 7,
+      "max_item_chars": 50,
+      "split_guidance": "More than 7 items: split into 2 agenda slides or group into sections."
+    },
+    "section_divider": {
+      "max_headline_chars": 50,
+      "max_subheader_chars": 80
+    },
+    "closing": {
+      "max_headline_chars": 60,
+      "max_subheader_chars": 80
+    },
+    "big_stat_manual": {
+      "max_number_chars": 10,
+      "max_label_chars": 80
+    },
+    "callout": {
+      "max_callout_chars": 150,
+      "max_supporting_chars": 200
+    },
+    "quote": {
+      "max_quote_chars": 200,
+      "max_attribution_chars": 60
+    },
+    "side_by_side": {
+      "max_body_lines": 8,
+      "max_body_chars_per_side": 200
+    },
+    "three_column": {
+      "max_body_lines": 6,
+      "max_body_chars_per_col": 150
+    },
+    "four_card": {
+      "min_cards": 1,
+      "max_cards_short_text": 8,
+      "max_cards_long_text": 6,
+      "comfortable_max": 6,
+      "max_body_chars_per_card": 100,
+      "split_guidance": "More than 6 cards with descriptions: split across 2 slides or use content_table."
+    },
+    "numbered_list": {
+      "min_items": 2,
+      "max_items": 7,
+      "comfortable_max": 5,
+      "max_title_chars": 40,
+      "max_body_chars": 100,
+      "split_guidance": "More than 5 items with body text: split across 2 slides."
+    },
+    "before_after": {
+      "min_items_per_side": 3,
+      "max_items_per_side": 7,
+      "comfortable_max": 5,
+      "max_item_chars": 50
+    },
+    "content_table": {
+      "min_cols": 2,
+      "max_cols": 6,
+      "min_rows": 2,
+      "max_rows_single_slide": 12,
+      "auto_splits_beyond": 12,
+      "comfortable_max_rows": 8,
+      "max_cell_chars": 60,
+      "split_guidance": "Tables auto-split beyond 12 rows. For 6+ columns, consider reducing to key columns only."
+    },
+    "content_table_bullets": {
+      "max_cols": 6,
+      "max_rows": 8,
+      "max_bullets": 5,
+      "split_guidance": "Keep table compact to leave room for bullets."
+    },
+    "matrix": {
+      "max_cols": 6,
+      "max_rows": 8,
+      "values": "Single character (R/A/C/I) or short code"
+    },
+    "kpi_dashboard": {
+      "min_metrics": 2,
+      "max_metrics": 8,
+      "comfortable_max": 6,
+      "max_number_chars": 8,
+      "max_label_chars": 30
+    },
+    "status_board": {
+      "min_items": 2,
+      "max_items": 7,
+      "comfortable_max": 5,
+      "max_summary_chars": 100
+    },
+    "comparison_matrix": {
+      "min_options": 2,
+      "max_options": 5,
+      "min_criteria": 3,
+      "max_criteria": 8,
+      "comfortable_max_criteria": 6,
+      "values": "full|three-quarter|half|quarter|none|check|cross or short text"
+    },
+    "process_flow": {
+      "min_steps": 3,
+      "max_steps_short_labels": 6,
+      "max_steps_long_labels": 5,
+      "comfortable_max": 5,
+      "max_label_chars": 25,
+      "max_body_chars": 40,
+      "split_guidance": "More than 5 steps: use roadmap for time-based or numbered_list for detailed steps."
+    },
+    "staircase": {
+      "min_levels": 3,
+      "max_levels": 5,
+      "max_label_chars": 20,
+      "max_body_chars": 30
+    },
+    "cycle_diagram": {
+      "min_nodes": 3,
+      "max_nodes": 6,
+      "max_label_chars": 10,
+      "split_guidance": "Node labels must be single short words (Plan, Build, Test). Long labels will wrap."
+    },
+    "hub_spoke": {
+      "min_spokes": 3,
+      "max_spokes_short_labels": 8,
+      "max_spokes_long_labels": 6,
+      "comfortable_max": 6,
+      "max_spoke_label_chars": 12,
+      "max_hub_label_chars": 15
+    },
+    "funnel": {
+      "min_stages": 3,
+      "max_stages": 5,
+      "max_label_chars": 15,
+      "max_value_chars": 20,
+      "split_guidance": "Narrow bars need short labels. Use abbreviations for the smallest stage."
+    },
+    "roadmap": {
+      "min_swimlanes": 1,
+      "max_swimlanes": 4,
+      "max_items_per_swimlane": 6
+    },
+    "waterfall": {
+      "min_items": 2,
+      "max_items": 7,
+      "max_label_chars": 12
+    },
+    "donut_rings": {
+      "min_rings": 2,
+      "max_rings": 6,
+      "comfortable_max": 4,
+      "max_label_chars": 25
+    },
+    "gauge_dashboard": {
+      "min_gauges": 2,
+      "max_gauges": 4,
+      "comfortable_max": 3,
+      "max_label_chars": 20
+    },
+    "tornado_chart": {
+      "min_items": 3,
+      "max_items": 7,
+      "max_label_chars": 25
+    },
+    "radar_chart": {
+      "min_axes": 4,
+      "max_axes": 8,
+      "max_series": 3,
+      "max_axis_label_chars": 15
+    },
+    "combo_chart": {
+      "min_categories": 3,
+      "max_categories": 8,
+      "max_category_label_chars": 8
+    },
+    "bubble_chart": {
+      "min_bubbles": 2,
+      "max_bubbles": 7,
+      "comfortable_max": 5,
+      "max_label_chars": 20
+    },
+    "risk_heat_map": {
+      "grid_size": "5x5",
+      "min_items": 1,
+      "max_items": 8,
+      "max_label_chars": 15,
+      "max_description_chars": 60
+    },
+    "quadrant": {
+      "fixed_quadrants": 4,
+      "max_items_per_quadrant": 5,
+      "comfortable_max": 3,
+      "max_item_chars": 30
+    },
+    "pros_cons": {
+      "min_items_per_side": 2,
+      "max_items_per_side": 6,
+      "comfortable_max": 4,
+      "max_item_chars": 50,
+      "max_recommendation_chars": 80
+    },
+    "pricing_table": {
+      "min_tiers": 2,
+      "max_tiers": 4,
+      "comfortable_max": 3,
+      "min_features": 2,
+      "max_features": 6,
+      "max_feature_chars": 30
+    },
+    "bold_bullet": {
+      "min_points": 2,
+      "max_points": 4,
+      "max_evidence_per_point": 3,
+      "max_assertion_chars": 80,
+      "max_evidence_chars": 60
+    },
+    "team_profiles": {
+      "min_profiles": 2,
+      "max_profiles": 8,
+      "comfortable_max": 4,
+      "max_name_chars": 25,
+      "max_role_chars": 30,
+      "max_context_chars": 40
+    },
+    "bento_grid": {
+      "min_tiles": 2,
+      "max_tiles": 5,
+      "max_title_chars": 20,
+      "max_body_chars": 60
+    },
+    "dashboard_panel": {
+      "min_kpis": 2,
+      "max_kpis": 4,
+      "min_chart_bars": 3,
+      "max_chart_bars": 6,
+      "max_summary_chars": 150
+    },
+    "left_nav_sidebar": {
+      "min_nav_items": 3,
+      "max_nav_items": 7
+    },
+    "image_text_hero": {
+      "max_body_chars": 200,
+      "text_positions": [
+        "left",
+        "right",
+        "bottom"
+      ]
+    },
+    "venn": {
+      "min_circles": 2,
+      "max_circles": 3,
+      "max_label_chars": 15
+    },
+    "concentric_circles": {
+      "min_rings": 2,
+      "max_rings": 4,
+      "max_label_chars": 10,
+      "max_value_chars": 8
+    },
+    "pyramid": {
+      "min_tiers": 3,
+      "max_tiers": 5,
+      "max_label_chars": 25,
+      "max_body_chars": 30
+    }
+  }
+}
