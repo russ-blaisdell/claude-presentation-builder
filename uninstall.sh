@@ -80,6 +80,19 @@ else
     skipped "Skill symlink (not found)"
 fi
 
+# Skill config (REPO_PATH file)
+REPO_PATH_FILE="$HOME/.claude/skills/create-presentation-config"
+if [ -f "$REPO_PATH_FILE" ]; then
+    if confirm "Remove skill config ($REPO_PATH_FILE)?"; then
+        rm -f "$REPO_PATH_FILE"
+        removed "Skill config"
+    else
+        skipped "Skill config"
+    fi
+else
+    skipped "Skill config (not found)"
+fi
+
 # ── 3. User-created brands ─────────────────────────────────────────
 
 BUILTIN_BRANDS="generic startup academic government tech-gradient earth"

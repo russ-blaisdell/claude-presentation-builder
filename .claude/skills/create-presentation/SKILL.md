@@ -13,16 +13,31 @@ argument-hint: "[topic] [audience] [number-of-research-areas]"
 Build a complete, research-backed presentation using the Claude Pres Builder.
 Follow this exact workflow in order. Do not skip phases.
 
+## Locating the builder
+
+The builder lives in a separate repository. Its location is recorded in:
+```
+~/.claude/skills/create-presentation-config
+```
+
+**Step 1 of every invocation: read this config file.** It exports `REPO_PATH`
+(the absolute path to the builder repo) and `PYTHON` (the absolute path to the
+builder's Python interpreter). Use these for ALL file references and shell
+commands below. If the file is missing or `REPO_PATH` is invalid, tell the user
+to run `setup.sh` in their cloned builder repo.
+
+For all references below, treat `$REPO` as shorthand for the value of
+`REPO_PATH` from that config.
+
 ## Deck Builder Reference
 
-**All presentations are built using the YAML-driven deck builder.** The builder
-lives in the same repository as this skill.
+**All presentations are built using the YAML-driven deck builder.**
 
 Before writing any YAML or building any deck, read these two files:
 
 **Presentation principles** (read FIRST -- governs all design decisions):
 ```
-presentation-principles.md
+$REPO/presentation-principles.md
 ```
 Contains: audience profiles, storytelling frameworks, icon rules, typography/emphasis
 rules, density limits, slide sequence templates. Use these to decide structure, layout
@@ -30,19 +45,19 @@ selection, content density, and headline style BEFORE writing YAML.
 
 **Presentation guide** (technical reference for YAML authoring):
 ```
-presentation-guide.md
+$REPO/presentation-guide.md
 ```
 Contains: all 47 layout types with YAML field references, icon names by category,
 design tokens, build commands, QA flags, content limits per layout.
 
 **Starter YAML skeletons:**
 ```
-deck-templates.md
+$REPO/deck-templates.md
 ```
 
 **Visual showcase -- screenshot of every layout with YAML:**
 ```
-README.md
+$REPO/README.md
 ```
 
 ---
@@ -69,10 +84,10 @@ If the topic is ambiguous, ask one clarifying question first:
 
 1. **Confirm working directory** with the user. All output files go here.
 
-2. **Read both reference files:**
+2. **Read both reference files** (using `$REPO` from the config):
    ```
-   presentation-principles.md
-   presentation-guide.md
+   $REPO/presentation-principles.md
+   $REPO/presentation-guide.md
    ```
 
 3. **Identify the audience profile** from `$ARGUMENTS[1]` and map to one of:
@@ -203,14 +218,15 @@ Start only after synthesis is complete.
 
 ### Step 1: Read the deck builder reference
 
-```bash
-cat presentation-guide.md
-```
+Read `$REPO/presentation-guide.md` (using the `Read` tool with the absolute path).
 
-### Step 2: Check Python environment
+### Step 2: Verify Python environment
+
+Use the `PYTHON` value from `~/.claude/skills/create-presentation-config`. This is
+the builder's venv with all dependencies pre-installed by `setup.sh`.
 
 ```bash
-ls /tmp/pres-venv/bin/python3 2>/dev/null || (python3 -m venv /tmp/pres-venv && /tmp/pres-venv/bin/pip install python-pptx pyyaml Pillow)
+ls "$PYTHON"  # should print the path; if missing, ask the user to run setup.sh in the builder repo
 ```
 
 ### Step 3: Write the YAML deck definition
@@ -269,18 +285,18 @@ slides:
 When content exceeds limits, **split across slides** rather than cramming. Use
 "(continued)", "(1/2)", or "Part 1" / "Part 2" in headlines.
 
-Full limits reference: `layout-limits.json`
+Full limits reference: `$REPO/layout-limits.json`
 
 **General content rules:**
 - Keep body text concise -- the slide is a visual aid, not a document
-- Use icons from the icon library (see presentation-guide.md for full list by category)
+- Use icons from the icon library (see `$REPO/presentation-guide.md` for full list by category)
 - Add `notes:` field with speaker notes for important slides
 
 ### Step 4: Build and QA
 
 ```bash
-# Build with proof images and QA pipeline
-/tmp/pres-venv/bin/python3 test_deck.py [topic-slug]-deck.yaml --proof-images
+# Build with proof images and QA pipeline (run from working directory)
+"$PYTHON" "$REPO/test_deck.py" [topic-slug]-deck.yaml --proof-images
 ```
 
 ### Step 5: Review proof images
@@ -301,7 +317,7 @@ Write two files in the working directory:
 - Research scope (one paragraph per area with key findings)
 - Presentation structure (acts and slides)
 - Key strategic principles (5 governing principles that emerged)
-- How to rebuild: `test_deck.py [yaml] --proof-images`
+- How to rebuild: `"$PYTHON" "$REPO/test_deck.py" [yaml] --proof-images` (substitute actual REPO_PATH and PYTHON values)
 
 **CLAUDE.md**
 - Project summary
