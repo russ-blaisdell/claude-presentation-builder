@@ -30,14 +30,16 @@ from pptx.enum.shapes import MSO_SHAPE_TYPE
 # Constants
 # ---------------------------------------------------------------------------
 
+# Default brand colors/fonts for corpus analysis — override via --brand-yaml
+# to analyze against your own brand's palette.
 BRAND_COLORS_HEX = {
-    "5F016F", "FF80D4", "FFADE4", "F0E8F5", "FFFFFF",
-    "333333", "888888", "D0C0D8",
-    "000000", "4EC98B", "FFD766", "E85D5D",
-    "FFF0F8", "F5F5F5",
+    "1A365D", "3182CE", "63B3ED", "EBF4FF", "FFFFFF",
+    "2D3748", "718096", "CBD5E0",
+    "000000", "2F855A", "C05621", "C53030",
+    "F7FAFC", "F5F5F5",
 }
 
-BRAND_FONTS = {"Urbanist ExtraBold", "DM Sans", "Urbanist", "DM Sans Medium"}
+BRAND_FONTS = {"Arial", "Arial Bold", "Arial Black"}
 
 # Canvas sizes for generation detection
 GEN1_WIDTH_INCHES = 13.33   # Pre-template (13.33" x 7.5")

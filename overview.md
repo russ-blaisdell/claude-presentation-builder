@@ -6,7 +6,7 @@
 
 ## What It Does
 
-YAML-driven PPTX presentation pipeline with 22 slide layouts, automated QA, and Claude vision review. All slides render on a clean canvas using the brand tokens (purple/pink, Urbanist/DM Sans fonts, 147 icons).
+YAML-driven PPTX presentation pipeline with 47 slide layouts, automated QA, and Claude vision review. All slides render on a clean canvas using configurable brand tokens (colors, fonts, icons from `brand.yaml`).
 
 ## Pipeline
 

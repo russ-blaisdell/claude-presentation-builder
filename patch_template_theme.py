@@ -92,7 +92,7 @@ def extract_theme(pptx_path):
 
     # Second pass: scan actual slide runs for the real fonts in use.
     # Template themes often declare generic fonts (Arial) while the actual
-    # placeholders use brand-specific fonts (Urbanist ExtraBold, DM Sans).
+    # placeholders use brand-specific fonts that differ from the theme declaration.
     try:
         from pptx import Presentation as _Prs
         from collections import defaultdict as _defaultdict

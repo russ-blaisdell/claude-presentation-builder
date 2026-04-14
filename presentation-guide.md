@@ -379,18 +379,20 @@ Reference icons by semantic name in any `*_icon` field. The builder resolves to 
 
 ## Design Tokens
 
-| Token | Value |
-|-------|-------|
-| **Heading font** | Urbanist ExtraBold |
-| **Body font** | DM Sans |
-| **Primary Purple** | `#5F016F` |
-| **Primary Pink** | `#FF80D4` |
-| **Light Pink** | `#FFADE4` |
-| **Light Background** | `#F0E8F5` |
-| **White** | `#FFFFFF` |
-| **Dark text** | `#333333` |
-| **Canvas** | 10" x 5.625" (16:9) |
-| **Content safe area** | 0.35"-9.65" horizontal, 0.85"-5.0" vertical |
+All colors and fonts come from your brand's `brand.yaml`. The table below shows the **generic** brand defaults. Your brand will have different values — check `brands/<your-brand>/brand.yaml`.
+
+| Token | Generic Default | Brand YAML Key |
+|-------|----------------|----------------|
+| **Heading font** | Arial | `fonts.heading` |
+| **Body font** | Arial | `fonts.body` |
+| **Primary** | `#1A365D` (navy) | `colors.primary` |
+| **Secondary** | `#3182CE` (blue) | `colors.secondary` |
+| **Accent** | `#63B3ED` (light blue) | `colors.accent` |
+| **Light Background** | `#EBF4FF` | `colors.background_light` |
+| **White** | `#FFFFFF` | `colors.white` |
+| **Dark text** | `#2D3748` | `colors.text_dark` |
+| **Canvas** | 10" x 5.625" (16:9) | — |
+| **Content safe area** | 0.35"-9.65" horizontal, 0.85"-5.0" vertical | — |
 
 ---
 
@@ -424,11 +426,13 @@ The builder picks the **lesser** of the calculated even distribution and the 75%
 
 | Level | Font | Size | Weight | Use |
 |-------|------|:----:|--------|-----|
-| Headline | Urbanist ExtraBold | 24pt | Extra Bold | Slide headline |
-| Section title | Urbanist ExtraBold | 12-14pt | Extra Bold | Column/card titles |
-| Body | DM Sans | 9-10pt | Regular | Main content |
-| Body bold | DM Sans | 9-10pt | Bold | Labels, emphasis (via `**text**`) |
-| Tertiary | DM Sans | 7-8pt | Regular | Footnotes, sources, bar labels |
+| Headline | Heading font | 24pt | Extra Bold | Slide headline |
+| Section title | Heading font | 12-14pt | Extra Bold | Column/card titles |
+| Body | Body font | 9-10pt | Regular | Main content |
+| Body bold | Body font | 9-10pt | Bold | Labels, emphasis (via `**text**`) |
+| Tertiary | Body font | 7-8pt | Regular | Footnotes, sources, bar labels |
+
+Heading and body fonts are set in your brand's `brand.yaml` (`fonts.heading` and `fonts.body`).
 
 ### Line Height
 

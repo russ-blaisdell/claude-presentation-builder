@@ -175,11 +175,11 @@ Icons are an enhancement, not an expectation. Most slides use zero icons and wor
 - Rule: bold = "important", italics = "different"
 
 ### Color as emphasis
-- **Purple (#5F016F):** structural elements — headers, labels, dividers, names
-- **Pink (#FF80D4):** accent — hero numbers in `big_stat`, key stats, decorative marks
+- **Primary color:** structural elements — headers, labels, dividers, names (set in `brand.yaml` `colors.primary`)
+- **Secondary/accent color:** accent — hero numbers in `big_stat`, key stats, decorative marks (set in `brand.yaml` `colors.secondary`)
 - **Green/Amber/Red:** status meaning only, never decorative
-- **Dark (#333333):** body text
-- **Gray (#888888):** supporting/secondary text
+- **Dark text color:** body text (set in `brand.yaml` `colors.text_dark`)
+- **Gray:** supporting/secondary text (set in `brand.yaml` `colors.text_gray`)
 - Max **4 color families** per slide
 
 ### Font size by context
@@ -195,8 +195,8 @@ Icons are an enhancement, not an expectation. Most slides use zero icons and wor
 *Corpus finding: some decks hit 5pt in budget tables and org charts. This is unreadable and should be caught by QA.*
 
 ### Non-brand font tolerance
-- **Brand fonts (DM Sans, Urbanist, Urbanist ExtraBold)** should be used for all new content.
-- **Non-brand fonts (Inter, Calibri, Arial)** appear in ~20% of company slides from Google Slides exports and shared templates. QA warns but does not error on non-brand fonts in corpus/imported slides.
+- **Brand fonts** (defined in `brand.yaml` `fonts.heading` and `fonts.body`) should be used for all new content.
+- **Non-brand fonts** may appear in imported slides from Google Slides exports and shared templates. QA warns but does not error on non-brand fonts in imported slides.
 
 ---
 
@@ -220,7 +220,7 @@ Content should never fill more than 65% of the slide area. The remaining 35% is 
 Operational slides that are fundamentally tabular (budget tables, OKR grids, issue trackers, status matrices) may exceed the 65% density rule and word limits. These slides must still enforce:
 - **7pt font floor** (no exceptions)
 - **Alternating row shading** or clear row separators for readability
-- **Bold column headers** with purple (#5F016F) background
+- **Bold column headers** with brand primary color background
 - **Max 200 words** — beyond 200, split into multiple slides or link to a spreadsheet
 
 *Corpus finding: 25% of slides in the corpus are fundamentally tabular. Denying this reality doesn't improve them — enforcing readability does.*

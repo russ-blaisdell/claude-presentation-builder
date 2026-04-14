@@ -1024,7 +1024,7 @@ def _render_body_text(text_frame, body_text, font_name, font_size_pt, color,
 
 
 def add_text_box(slide, text, left, top, width, height, font_size=12,
-                 font_name="DM Sans", bold=False, color=None, alignment=PP_ALIGN.LEFT):
+                 font_name="Arial", bold=False, color=None, alignment=PP_ALIGN.LEFT):
     """Add a manual text box at explicit coordinates (inches)."""
     txBox = slide.shapes.add_textbox(SI(left), SI(top),
                                      SI(width), SI(height))
@@ -3753,7 +3753,7 @@ def _build_kpi_dashboard(slide, slide_def, deck_meta):
             display_text += f" / {target}"
 
         # Auto-scale number font to fit card width.
-        # Estimate: Urbanist ExtraBold at N pt ≈ N * 0.6 / 72 inches per char.
+        # Estimate: heading font at N pt ≈ N * 0.6 / 72 inches per char.
         # Scale down if text would exceed the inner card width.
         num_size = base_num_size
         chars_per_inch_at_size = lambda sz: 72 / (sz * 0.6)

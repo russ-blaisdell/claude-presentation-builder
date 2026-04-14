@@ -17,15 +17,15 @@ from pptx.enum.shapes import MSO_SHAPE
 STYLE_PALETTES = {
     # === PRIMARY STYLES (brand-aware — uses brand colors) ===
     "corporate": {
-        "root_fill": "#5F016F",
+        "root_fill": "#1A365D",
         "root_text": "#FFFFFF",
-        "root_sub": "#FFADE4",
-        "child_fill": "#F0E8F5",
-        "child_border": "#5F016F",
-        "child_text": "#5F016F",
-        "child_sub": "#333333",
-        "connector": "#5F016F",
-        "accent": "#FF80D4",
+        "root_sub": "#A3C4EC",
+        "child_fill": "#EBF4FF",
+        "child_border": "#1A365D",
+        "child_text": "#1A365D",
+        "child_sub": "#2D3748",
+        "connector": "#1A365D",
+        "accent": "#3182CE",
         "bg": "#FFFFFF",
     },
     "tech-gradient": {
@@ -66,16 +66,16 @@ STYLE_PALETTES = {
         "bg": "#FFFFFF",
     },
     "glassmorphism": {
-        "root_fill": "#5F016F",
+        "root_fill": "#1A365D",
         "root_text": "#FFFFFF",
-        "root_sub": "#FFADE4",
-        "child_fill": "#F5EEFA",
-        "child_border": "#D4B5E8",
-        "child_text": "#5F016F",
-        "child_sub": "#7A5A8A",
-        "connector": "#C9A0DC",
-        "accent": "#FF80D4",
-        "bg": "#FAFAFE",
+        "root_sub": "#A3C4EC",
+        "child_fill": "#F0F7FF",
+        "child_border": "#B3D4FC",
+        "child_text": "#1A365D",
+        "child_sub": "#4A6A8A",
+        "connector": "#90B8E0",
+        "accent": "#3182CE",
+        "bg": "#FAFCFF",
     },
     "neon-wireframe": {
         "root_fill": "#1A1A2E",
@@ -90,16 +90,16 @@ STYLE_PALETTES = {
         "bg": "#0F0F23",
     },
     "paper-cut": {
-        "root_fill": "#5F016F",
+        "root_fill": "#1A365D",
         "root_text": "#FFFFFF",
-        "root_sub": "#FFADE4",
-        "child_fill": "#FFF5FA",
-        "child_border": "#E8C5D8",
-        "child_text": "#5F016F",
-        "child_sub": "#8A5A7A",
-        "connector": "#D4A0C0",
-        "accent": "#FF80D4",
-        "bg": "#FFFBFD",
+        "root_sub": "#A3C4EC",
+        "child_fill": "#F5F9FF",
+        "child_border": "#C5D8E8",
+        "child_text": "#1A365D",
+        "child_sub": "#5A6A7A",
+        "connector": "#A0B8D4",
+        "accent": "#3182CE",
+        "bg": "#FBFDFF",
     },
     "minimal-line": {
         "root_fill": "#FFFFFF",
@@ -110,7 +110,7 @@ STYLE_PALETTES = {
         "child_text": "#1A1A1A",
         "child_sub": "#666666",
         "connector": "#1A1A1A",
-        "accent": "#FF80D4",
+        "accent": "#3182CE",
         "bg": "#FFFFFF",
     },
     "hand-drawn": {
@@ -131,11 +131,11 @@ STYLE_PALETTES = {
 def _build_brand_palettes(tokens):
     """Build brand-aware palettes for corporate, glassmorphism, and paper-cut styles."""
     c = tokens.get("colors", {})
-    primary = c.get("purple", "#5F016F")
-    secondary = c.get("pink", "#FF80D4")
-    accent = c.get("light_pink", "#FFADE4")
-    light_bg = c.get("light_bg", "#F0E8F5")
-    dark = c.get("dark", "#333333")
+    primary = c.get("purple", "#1A365D")
+    secondary = c.get("pink", "#3182CE")
+    accent = c.get("light_pink", "#63B3ED")
+    light_bg = c.get("light_bg", "#EBF4FF")
+    dark = c.get("dark", "#2D3748")
     return {
         "corporate": {
             "root_fill": primary, "root_text": "#FFFFFF", "root_sub": accent,
@@ -249,7 +249,7 @@ class NativeRenderer:
             # Adaptive font size for children based on box width
             max_child_name = max((len(c) if isinstance(c, str) else len(c.get("name", "")))
                                  for c in children) if children else 0
-            chars_per_inch = 10  # approximate for DM Sans bold
+            chars_per_inch = 10  # approximate for typical body font bold
             fits_at_8pt = child_w * chars_per_inch >= max_child_name
             child_font_size = 8 if fits_at_8pt else max(6, min(8, int(child_w * chars_per_inch * 8 / max_child_name)))
 

@@ -46,23 +46,23 @@ APPROACH_CAPABILITIES = {
     ],
 }
 
-# Default design tokens — used when no brand is passed
+# Default design tokens — generic brand (used when no brand is passed)
 DESIGN_TOKENS = {
     "colors": {
-        "purple": "#5F016F",
-        "pink": "#FF80D4",
-        "light_pink": "#FFADE4",
-        "light_bg": "#F0E8F5",
+        "purple": "#1A365D",
+        "pink": "#3182CE",
+        "light_pink": "#63B3ED",
+        "light_bg": "#EBF4FF",
         "white": "#FFFFFF",
-        "dark": "#333333",
-        "gray": "#888888",
-        "divider": "#D0C0D8",
+        "dark": "#2D3748",
+        "gray": "#718096",
+        "divider": "#CBD5E0",
     },
     "fonts": {
-        "heading": "Urbanist ExtraBold",
-        "body": "DM Sans",
+        "heading": "Arial",
+        "body": "Arial",
     },
-    "brand": "Default",
+    "brand": "Generic",
 }
 
 

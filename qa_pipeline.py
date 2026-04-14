@@ -31,16 +31,16 @@ from pptx.enum.text import PP_ALIGN
 # Constants
 # ---------------------------------------------------------------------------
 
-# Default brand colors/fonts — overridden when brand is passed
+# Default brand colors/fonts (generic) — overridden when brand is passed
 BRAND_COLORS_HEX = {
-    "5F016F", "FF80D4", "FFADE4", "F0E8F5", "FFFFFF",
-    "333333", "888888", "D0C0D8",
-    # Common variants
-    "000000", "4EC98B", "FFD766", "E85D5D",
-    "FFF0F8", "F5F5F5",
+    "1A365D", "3182CE", "63B3ED", "EBF4FF", "FFFFFF",
+    "2D3748", "718096", "CBD5E0",
+    # Common visualization colors
+    "000000", "2F855A", "C05621", "C53030",
+    "F7FAFC", "F5F5F5",
 }
 
-BRAND_FONTS = {"Urbanist ExtraBold", "DM Sans", "Urbanist", "DM Sans Medium"}
+BRAND_FONTS = {"Arial", "Arial Bold", "Arial Black"}
 
 
 def _brand_colors(brand=None):
@@ -57,7 +57,7 @@ def _brand_fonts(brand=None):
     """Get brand font name set, falling back to defaults."""
     if brand:
         fonts = brand.all_font_names()
-        # Include common variants (e.g. "Urbanist" without weight suffix)
+        # Include common variants (e.g. base name without weight suffix)
         for f in list(fonts):
             base = f.split()[0] if " " in f else f
             fonts.add(base)
@@ -902,7 +902,7 @@ def check_table_centering(prs):
     return issues
 
 
-def check_kpi_text_overflow(prs):
+def check_kpi_text_overflow(prs, brand=None):
     """Check if KPI dashboard number text is too wide for its card.
 
     KPI cards use large fonts for the number field. Text like 'Nutanix AHV'
@@ -913,17 +913,18 @@ def check_kpi_text_overflow(prs):
     issues = []
     for si, slide in enumerate(prs.slides):
         slide_num = si + 1
-        # Find KPI-style shapes: large Urbanist ExtraBold text in a rounded rectangle context
+        # Find KPI-style shapes: large heading-font text in a rounded rectangle context
+        heading_fonts = _brand_fonts(brand) if brand else BRAND_FONTS
         for shape in slide.shapes:
             if not hasattr(shape, "text_frame") or not shape.text.strip():
                 continue
             if shape.has_table:
                 continue
             tf = shape.text_frame
-            # Check if this looks like a KPI number: Urbanist ExtraBold, >= 20pt, no word wrap
+            # Check if this looks like a KPI number: heading font, >= 20pt, no word wrap
             for para in tf.paragraphs:
                 for run in para.runs:
-                    if (run.font.name == "Urbanist ExtraBold"
+                    if (run.font.name in heading_fonts
                             and run.font.size
                             and run.font.size / 12700 >= 20
                             and not tf.word_wrap):
@@ -943,7 +944,7 @@ def check_kpi_text_overflow(prs):
     return issues
 
 
-def check_kpi_label_alignment(prs):
+def check_kpi_label_alignment(prs, brand=None):
     """Check that KPI card labels within the same row are vertically aligned.
 
     KPI dashboards have metric cards in a grid. The label text (e.g., 'VMs to AWS')
@@ -955,7 +956,7 @@ def check_kpi_label_alignment(prs):
     issues = []
     for si, slide in enumerate(prs.slides):
         slide_num = si + 1
-        # Find DM Sans labels that look like KPI labels:
+        # Find body-font labels that look like KPI labels:
         # small font (8-12pt), centered, within a card-like vertical band
         kpi_labels = []
         for shape in slide.shapes:
@@ -966,8 +967,9 @@ def check_kpi_label_alignment(prs):
             tf = shape.text_frame
             for para in tf.paragraphs:
                 if para.alignment == PP_ALIGN.CENTER:
+                    body_fonts = _brand_fonts(brand) if brand else BRAND_FONTS
                     for run in para.runs:
-                        if (run.font.name == "DM Sans"
+                        if (run.font.name in body_fonts
                                 and run.font.size
                                 and 7 <= run.font.size / 12700 <= 13
                                 and len(run.text.strip()) < 30):
