@@ -4196,7 +4196,16 @@ def _build_before_after(slide, slide_def, deck_meta):
 def _build_numbered_list(slide, slide_def, deck_meta):
     """Build a numbered list slide with large numbers and title/body per item.
 
-    Fields: headline, items (list of {title, body, icon}).
+    Layout rules:
+      - Every item occupies the same vertical slot (parallel-step structure).
+        Slot height = max(item heights) so the largest item fits and others
+        align to the same rhythm.
+      - Item titles must not exceed 2 lines (authoring rule). Items longer
+        than that should be shortened or split. Build raises ValueError if
+        any item exceeds the limit.
+      - Number marker height matches slot height (no fixed 0.5" overhang).
+
+    Fields: headline, items (list of {title, body, icon} or strings).
     """
     brand = deck_meta.get("brand", BrandConfig())
     HEADING = brand.heading_font
@@ -4217,20 +4226,50 @@ def _build_numbered_list(slide, slide_def, deck_meta):
     text_left = 0.35 + num_w + 0.15
     text_w = usable_w - num_w - 0.15
 
-    # Calculate per-item height
+    # ── Authoring rule: titles must fit in ≤ 2 lines ──
+    title_font_pt = 12
+    title_line_h = title_font_pt * 1.4 / 72  # 0.233" at 12pt
+    max_title_lines = 2
+    max_title_h = max_title_lines * title_line_h * 1.10  # +10% slack
+
+    violations = []
+    for i, item in enumerate(items):
+        title = item.get("title", "") if isinstance(item, dict) else str(item)
+        h = estimate_text_height(title, text_w, title_font_pt)
+        if h > max_title_h:
+            est_lines = round(h / title_line_h)
+            violations.append(
+                f"  Item {i+1}: ~{est_lines} lines, {len(title)} chars — "
+                f"\"{title[:60]}{'...' if len(title) > 60 else ''}\""
+            )
+
+    if violations:
+        raise ValueError(
+            f"numbered_list slide \"{slide_def.get('headline', '')}\": "
+            f"{len(violations)} item(s) exceed the 2-line authoring rule:\n"
+            + "\n".join(violations)
+            + f"\n\nFix: shorten the text or split into multiple items."
+        )
+
+    # ── Compute uniform slot height (max across all items) ──
     item_heights = []
     for item in items:
         title = item.get("title", "") if isinstance(item, dict) else str(item)
         body = item.get("body", "") if isinstance(item, dict) else ""
-        title_h = estimate_text_height(title, text_w, 12)
+        title_h = estimate_text_height(title, text_w, title_font_pt)
         body_h = estimate_text_height(body, text_w, 10) if body else 0
         item_heights.append(title_h + body_h + 0.05)
 
-    total_h = sum(item_heights) + (n - 1) * 0.15  # divider gaps
+    slot_h = max(item_heights)
+    inter_item_gap = 0.18  # 0.03 small gap + 0.15 post-divider
+    total_h = n * slot_h + (n - 1) * inter_item_gap
+
     offset = avail_top + (avail_h - total_h) / 2
     offset = max(offset, avail_top)
 
-    cur_y = offset
+    # ── Render items at uniform slot pitch ──
+    from pptx.enum.text import MSO_ANCHOR
+
     for i, item in enumerate(items):
         if isinstance(item, dict):
             title = item.get("title", "")
@@ -4239,45 +4278,53 @@ def _build_numbered_list(slide, slide_def, deck_meta):
             title = str(item)
             body = ""
 
-        # Large number
-        num_h = item_heights[i]
-        txb = slide.shapes.add_textbox(SI(0.35), SI(cur_y),
-                                       SI(num_w), SI(0.5))
+        slot_top = offset + i * (slot_h + inter_item_gap)
+
+        # Large number — fills slot, vertically centered
+        txb = slide.shapes.add_textbox(SI(0.35), SI(slot_top),
+                                       SI(num_w), SI(slot_h))
         tf = txb.text_frame; tf.word_wrap = False
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         r = tf.paragraphs[0].add_run()
         r.text = str(i + 1); r.font.name = HEADING
         r.font.size = Pt(28); r.font.color.rgb = PURPLE
         tf.paragraphs[0].alignment = PP_ALIGN.RIGHT
 
-        # Title
-        title_h = estimate_text_height(title, text_w, 12)
-        txb = slide.shapes.add_textbox(SI(text_left), SI(cur_y),
-                                       SI(text_w), SI(title_h))
-        tf = txb.text_frame; tf.word_wrap = True
-        r = tf.paragraphs[0].add_run()
-        r.text = title; r.font.name = HEADING
-        r.font.size = Pt(12); r.font.color.rgb = PURPLE
-        cur_y += title_h
-
-        # Body
         if body:
+            # Title + body: anchor block to top of slot (compatible with
+            # multi-line body text). Title at top, body directly below.
+            title_h = estimate_text_height(title, text_w, title_font_pt)
+            txb = slide.shapes.add_textbox(SI(text_left), SI(slot_top),
+                                           SI(text_w), SI(title_h))
+            tf = txb.text_frame; tf.word_wrap = True
+            r = tf.paragraphs[0].add_run()
+            r.text = title; r.font.name = HEADING
+            r.font.size = Pt(12); r.font.color.rgb = PURPLE
+
             body_h = estimate_text_height(body, text_w, 10)
-            txb = slide.shapes.add_textbox(SI(text_left), SI(cur_y + 0.02),
+            txb = slide.shapes.add_textbox(SI(text_left), SI(slot_top + title_h + 0.02),
                                            SI(text_w), SI(body_h))
             tf = txb.text_frame; tf.word_wrap = True
             _render_body_text(tf, body, BODY, 10, DARK)
-            cur_y += body_h + 0.05
+        else:
+            # Title-only: fill slot and vertically center so 1-line items
+            # don't sit at the top with whitespace below them.
+            txb = slide.shapes.add_textbox(SI(text_left), SI(slot_top),
+                                           SI(text_w), SI(slot_h))
+            tf = txb.text_frame; tf.word_wrap = True
+            tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+            r = tf.paragraphs[0].add_run()
+            r.text = title; r.font.name = HEADING
+            r.font.size = Pt(12); r.font.color.rgb = PURPLE
 
-        cur_y += 0.03  # small gap before divider
-
-        # Divider between items (not after last)
+        # Divider between slots — at the bottom of each slot except the last
         if i < n - 1:
+            divider_y = slot_top + slot_h + (inter_item_gap / 2)
             line = slide.shapes.add_connector(
-                1, SI(0.35), SI(cur_y + 0.06),
-                SI(9.65), SI(cur_y + 0.06))
+                1, SI(0.35), SI(divider_y),
+                SI(9.65), SI(divider_y))
             line.line.color.rgb = brand.divider
             line.line.width = Pt(0.5)
-            cur_y += 0.15
 
 
 def _build_status_board(slide, slide_def, deck_meta):
