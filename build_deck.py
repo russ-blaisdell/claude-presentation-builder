@@ -3752,23 +3752,31 @@ def _build_kpi_dashboard(slide, slide_def, deck_meta):
         if target:
             display_text += f" / {target}"
 
-        # Auto-scale number font to fit card width.
+        # Number text gets the full card width (not just inner_w) so wide
+        # values like "+15-20%" or "$1,500" don't wrap in PowerPoint where
+        # rendered text width can exceed the estimator's prediction
+        # (e.g., em-dashes, percent signs, narrow brand fonts like DM Sans).
+        num_w = card_w
+
+        # Auto-scale number font to fit the full card width.
         # Estimate: heading font at N pt ≈ N * 0.6 / 72 inches per char.
-        # Scale down if text would exceed the inner card width.
+        # Scale down if text would exceed the card width.
         num_size = base_num_size
         chars_per_inch_at_size = lambda sz: 72 / (sz * 0.6)
         text_width_est = len(display_text) / chars_per_inch_at_size(num_size)
-        while text_width_est > inner_w and num_size > 14:
+        while text_width_est > num_w and num_size > 14:
             num_size -= 2
             text_width_est = len(display_text) / chars_per_inch_at_size(num_size)
 
         # Number text fills the space between icon bottom and label top
         label_y = cy + card_h - label_offset_from_bottom
         num_avail_h = label_y - inner_y - 0.04
-        num_h = min(estimate_text_height(display_text, inner_w, num_size), num_avail_h)
+        num_h = min(estimate_text_height(display_text, num_w, num_size), num_avail_h)
 
-        txb = slide.shapes.add_textbox(SI(cx + pad), SI(inner_y),
-                                       SI(inner_w), SI(num_h))
+        # Textbox spans the full card width so centered text has maximum
+        # horizontal room before wrapping
+        txb = slide.shapes.add_textbox(SI(cx), SI(inner_y),
+                                       SI(num_w), SI(num_h))
         tf = txb.text_frame; tf.word_wrap = False
         r = tf.paragraphs[0].add_run()
         r.text = display_text; r.font.name = HEADING
