@@ -252,6 +252,82 @@ def test_numbered_list_max_two_lines_authoring_rule():
     )
 
 
+# ─── Number marker rendering ───────────────────────────────
+
+
+# Fixture: all items fit on a single line. This stresses the case where
+# slot_h would otherwise be smaller than the 28pt number marker's natural
+# height — which used to clip the markers to invisibility.
+SHORT_ITEMS_YAML = """\
+title: "Short Items Numbered List"
+brand: generic
+slides:
+- layout: numbered_list
+  headline: "All Single-Line Items"
+  items:
+  - "Sponsor AWS EDP and Google CUD layered commits"
+  - "Approve smaller Anthropic-direct commit"
+  - "Approve Q3 2026 performance reduction framework"
+  - "Sponsor active top-decile retention investment"
+  - "Endorse 18-month adoption-first sequencing"
+"""
+
+
+def test_number_markers_render_with_short_items():
+    """Number markers must remain visible when all items fit on 1 line.
+
+    Regression: when slot_h was sized strictly to max(item_heights), short
+    single-line items produced a slot ~0.28" tall, but the 28pt number
+    marker needs ~0.54". The marker textbox shrunk below its content,
+    causing the digit to clip to invisibility in PowerPoint and LibreOffice
+    rendering. Fix: enforce min_slot_h that accommodates the marker.
+    """
+    if not HAS_PPTX:
+        if pytest:
+            pytest.skip("python-pptx not available")
+        return
+
+    with tempfile.TemporaryDirectory() as td:
+        yaml_path = Path(td) / "short.yaml"
+        yaml_path.write_text(SHORT_ITEMS_YAML)
+        pptx_path = Path(td) / "short.pptx"
+
+        sys.path.insert(0, str(SCRIPT_DIR))
+        try:
+            import build_deck
+            build_deck.build_deck(str(yaml_path), str(pptx_path))
+        finally:
+            sys.path.pop(0)
+
+        prs = Presentation(pptx_path)
+        markers = _find_number_markers(prs.slides[0])
+
+    assert len(markers) == 5, (
+        f"Expected 5 number markers, found {len(markers)}.\n"
+        f"This typically means short single-line items produced slots\n"
+        f"too small for the 28pt marker, causing it to render but become\n"
+        f"invisible. Enforce a minimum slot height ≥ 0.6\"."
+    )
+
+    # Each marker should have a height that fits its 28pt content
+    # (28pt × 1.4 / 72 = 0.544"). Allow some renderer slack but flag
+    # anything below 0.5" as a likely clipping risk.
+    too_small = []
+    for i, m in enumerate(markers):
+        h_in = m.height / EMU_PER_INCH
+        if h_in < 0.5:
+            too_small.append((i + 1, h_in))
+
+    assert not too_small, (
+        f"\n{len(too_small)} number marker(s) sized too small for 28pt content:\n"
+        + "\n".join(
+            f"  Marker {n}: height {h:.3f}\" (need ≥ 0.5\" for 28pt)"
+            for n, h in too_small
+        )
+        + "\n\n  Fix: enforce min_slot_h ≥ 0.6\" so the marker fits."
+    )
+
+
 # ─── Vertical centering ────────────────────────────────────
 
 
@@ -371,6 +447,7 @@ if __name__ == "__main__":
         test_numbered_list_uniform_pitch,
         test_numbered_list_markers_dont_overlap,
         test_numbered_list_max_two_lines_authoring_rule,
+        test_number_markers_render_with_short_items,
         test_title_textframes_are_vertically_centered,
         test_build_rejects_overlong_items,
     ]

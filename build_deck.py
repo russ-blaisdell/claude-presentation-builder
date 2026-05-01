@@ -4260,7 +4260,10 @@ def _build_numbered_list(slide, slide_def, deck_meta):
         body_h = estimate_text_height(body, text_w, 10) if body else 0
         item_heights.append(title_h + body_h + 0.05)
 
-    slot_h = max(item_heights)
+    # Minimum slot height accommodates the 28pt number marker
+    # (28pt × 1.4 line-height / 72 pt-per-inch = 0.544", + small padding)
+    min_slot_h = 0.6
+    slot_h = max(max(item_heights), min_slot_h)
     inter_item_gap = 0.18  # 0.03 small gap + 0.15 post-divider
     total_h = n * slot_h + (n - 1) * inter_item_gap
 
